@@ -7,8 +7,9 @@
 
 import React from 'react';
 import {View, FlatList, Linking} from 'react-native';
-import {Button} from 'react-native-paper';
+import {Button, Text} from 'react-native-paper';
 import courses from '../data/courses.json';
+import AppStyles from '../styles/AppStyles';
 
 const handleClick = (link: any) => {
   Linking.canOpenURL(link).then(supported => {
@@ -25,12 +26,15 @@ const App = () => (
     <FlatList
       data={courses}
       renderItem={({item}) => (
-        <Button
-          onPress={() => {
-            handleClick(item.link);
-          }}>
-          {item.title}
-        </Button>
+        <View>
+          <Text>{item.title}</Text>
+          <Button
+            onPress={() => {
+              handleClick(item.link);
+            }}>
+            Tap to view course
+          </Button>
+        </View>
       )}
     />
   </View>
