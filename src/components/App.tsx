@@ -7,7 +7,7 @@
 
 import React from 'react';
 import {View, FlatList, Linking} from 'react-native';
-import {Button, Text} from 'react-native-paper';
+import {Appbar, Button, Card, Paragraph, Title} from 'react-native-paper';
 import courses from '../data/courses.json';
 import AppStyles from '../styles/AppStyles';
 
@@ -23,18 +23,27 @@ const handleClick = (link: any) => {
 
 const App = () => (
   <View>
+    <Appbar style={AppStyles.bar}>
+      <Appbar.Content title="Courses" />
+    </Appbar>
     <FlatList
       data={courses}
       renderItem={({item}) => (
-        <View>
-          <Text>{item.title}</Text>
-          <Button
-            onPress={() => {
-              handleClick(item.link);
-            }}>
-            Tap to view course
-          </Button>
-        </View>
+        <Card>
+          <Card.Cover source={{uri: item.image}} />
+          <Card.Content>
+            <Title>{item.title}</Title>
+            <Paragraph>{item.description}</Paragraph>
+          </Card.Content>
+          <Card.Actions>
+            <Button
+              onPress={() => {
+                handleClick(item.link);
+              }}>
+              Tap to view course
+            </Button>
+          </Card.Actions>
+        </Card>
       )}
     />
   </View>

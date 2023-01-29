@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native/types';
+import {StyleSheet} from 'react-native';
 
 const AppStyles = StyleSheet.create({
-  container: {
-    color: 'white',
+  bar: {
+    marginTop: 50,
   },
 });
 
